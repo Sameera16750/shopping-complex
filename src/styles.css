@@ -1,1 +1,24 @@
-/* You can add global styles to this file, and also import other style files */
+/* importing tailwind css*/
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+
+  /* theme colors */
+  --primary-color-blue:#43bff0;
+  --primary-color-green:#43d629;
+  --primary-color-red:#e22148;
+  --primary-color-white:#ffffff;
+  --primary-color-black:#111010;
+}
+
+*{
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.body{
+  background-color: var(--primary-color-white);
+  color: var(--primary-color-black);
+}

@@ -5,7 +5,7 @@ import {provideRouter} from '@angular/router';
 
 // from routes file
 import {routes} from './app.routes';
-// from angular angular platform browser
+// from angular platform browser
 import {provideNoopAnimations} from "@angular/platform-browser/animations";
 
 // app configs
