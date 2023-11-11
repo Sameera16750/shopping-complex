@@ -1,0 +1,13 @@
+<div class="flex w-full h-full text-[--primary-color-black] flex-col admin-sidebar">
+  <div class="pt-[25px] ps-[25px] pb-[10px] w-full h-fit">
+    <h1 class="text-center text-2xl uppercase font-bold logo"><span class="text-[--primary-color-blue]">S</span>
+      Comp<span class="text-[--primary-color-blue]">lex</span></h1>
+  </div>
+  <div class="h-[-webkit-fill-available] ps-[20px] pt-[10px] pb-[10px] overflow-y-hidden">
+    <div class="overflow-y-auto h-full bg-[--primary-color-white] p-[15px] rounded-[5px]">
+      <div class="card flex justify-content-center">
+        <p-panelMenu [model]="items" class="w-full" [multiple]="true"></p-panelMenu>
+      </div>
+    </div>
+  </div>
+</div>

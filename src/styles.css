@@ -1,3 +1,7 @@
+/* fonts*/
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@500&display=swap');
+/* prime Ng Icons*/
+@import "primeicons/primeicons.css";
 /* importing tailwind css*/
 @tailwind base;
 @tailwind components;
@@ -10,15 +14,30 @@
   --primary-color-green:#43d629;
   --primary-color-red:#e22148;
   --primary-color-white:#ffffff;
-  --primary-color-black:#111010;
+  --primary-color-black:#0a061a;
+
+  --bg-white-1: #ECECF9;
 }
 
 *{
-  font-size: 16px;
   font-weight: 400;
 }
 
 .body{
   background-color: var(--primary-color-white);
   color: var(--primary-color-black);
+}
+
+/* Webkit (Chrome, Safari) */
+::-webkit-scrollbar {
+  width: 3px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--primary-color-blue);
+  border-radius: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: transparent;
 }

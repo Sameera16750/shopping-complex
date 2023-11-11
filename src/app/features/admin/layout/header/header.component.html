@@ -1,1 +1,17 @@
-<p>header works!</p>
+<header class="flex py-[20px] items-center pe-[25px] gap-[20px]">
+  <div (click)="toggleMenu=!toggleMenu;isMenuOpened.emit(toggleMenu)"
+       class="cursor-pointer text-[--primary-color-black] duration-[0.2s] hover:bg-[--primary-color-blue]
+    hover:text-[--primary-color-white] rounded-[5px] flex justify-center items-center p-[10px]">
+    <i class="pi pi-bars text-[20px] "></i>
+  </div>
+  <h2 class="justify-self-center font-[600] text-[18px] capitalize">{{pageTitle}}</h2>
+  <div class="flex ms-auto justify-center items-center cursor-pointer" (click)="menu.toggle($event)">
+    <p-avatar icon="pi pi-user" styleClass="mr-2 bg-[--primary-color-blue] text-[--primary-color-white] cursor-pointer"
+              shape="circle"></p-avatar>
+    <div class="flex flex-col gap-[0] justify-center items-center">
+      <span class="text-[12px]">Hi, Welcome,</span>
+      <span>Sameera</span>
+    </div>
+    <p-menu #menu [model]="items" [popup]="true" styleClass="text-[12px] w-fit"></p-menu>
+  </div>
+</header>
