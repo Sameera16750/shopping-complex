@@ -10,27 +10,31 @@
 :root {
 
   /* theme colors */
-  --primary-color-blue:#43bff0;
-  --primary-color-green:#43d629;
-  --primary-color-red:#e22148;
-  --primary-color-white:#ffffff;
-  --primary-color-black:#0a061a;
+  --primary-color-blue: #43bff0;
+  --primary-color-blue-50: rgba(67, 191, 240, 0.50);
+  --primary-color-green: #43d629;
+  --primary-color-yellow: #ead81c;
+  --primary-color-red: #e22148;
+  --primary-color-white: #ffffff;
+  --primary-color-black: #44486D;
 
   --bg-white-1: #ECECF9;
+
+  --crd-box-shadow-1: 0 4px 30px rgba(221, 224, 255, .54)
 }
 
-*{
+* {
   font-weight: 400;
 }
 
-.body{
-  background-color: var(--primary-color-white);
+.body, h1, h2, h3, h4, h5, label{
   color: var(--primary-color-black);
 }
 
 /* Webkit (Chrome, Safari) */
 ::-webkit-scrollbar {
   width: 3px;
+  height:5px
 }
 
 ::-webkit-scrollbar-thumb {
@@ -41,3 +45,4 @@
 ::-webkit-scrollbar-track {
   background-color: transparent;
 }
+

@@ -2,8 +2,10 @@
   <div class="overflow-x-hidden duration-[0.5s]" [class]="!isMenuOpened?'w-0':'w-[calc(100%/3.2)]'">
     <app-sidebar (pageTitle)="pageTitle=$event"></app-sidebar>
   </div>
-  <div class="w-full h-full ps-[25px]">
+  <div class="w-full h-full ps-[25px] flex flex-col">
     <app-header [pageTitle]="pageTitle" (isMenuOpened)="isMenuOpened=$event"></app-header>
-    <app-content></app-content>
+    <div class="h-[-webkit-fill-available] pe-[20px] overflow-y-scroll pb-[30px]">
+      <app-content></app-content>
+    </div>
   </div>
 </div>

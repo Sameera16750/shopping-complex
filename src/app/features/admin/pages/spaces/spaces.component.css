@@ -1,0 +1,30 @@
+.space-header-crd {
+  @apply w-full flex flex-col gap-[10px] bg-[--primary-color-white] p-[20px] rounded-[10px] text-[--primary-color-black];
+  box-shadow: var(--crd-box-shadow-1)
+}
+
+.space-header-crd h3 {
+  @apply text-[20px] text-center uppercase font-[500]
+}
+
+.space-header-crd .details {
+  @apply flex justify-center gap-y-[10px] w-full flex-col
+}
+
+.space-header-crd .totals {
+  @apply flex justify-between w-full items-center
+}
+
+.space-header-crd .value-area{
+  @apply flex justify-center items-center flex-col gap-[10px]
+}
+
+.space-header-crd .value {
+  @apply m-auto text-[20px] font-[700]
+}
+
+.add-btn {
+  @apply justify-center items-center cursor-pointer ms-auto p-[10px] rounded-[5px] text-[--primary-color-blue]
+  text-[18px] font-[600] duration-[0.2s]
+  hover:bg-[--primary-color-blue] hover:text-[--primary-color-white]
+}

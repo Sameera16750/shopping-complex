@@ -1,1 +1,57 @@
-<p>spaces works!</p>
+<div class="flex flex-wrap gap-[20px]">
+  <div class="w-[calc((100%/2)-10px)] flex flex-col gap-[20px]">
+    <div class="space-header-crd">
+      <h3>Floors</h3>
+      <div class="details">
+        <div class="totals">
+          <div class="flex w-[70%] justify-between">
+            <div class="value-area">
+              <p-tag value="Total" styleClass="bg-[--primary-color-blue]"></p-tag>
+              <span class="value">10</span>
+            </div>
+            <div class="value-area">
+              <p-tag value="Available" styleClass="bg-[--primary-color-green]"></p-tag>
+              <span class="value">3</span>
+            </div>
+            <div class="value-area">
+              <p-tag value="Filled" styleClass="bg-[--primary-color-yellow]"></p-tag>
+              <span class="value">7</span>
+            </div>
+          </div>
+          <div class="add-btn"> Add <i class="pi pi-fw pi-plus"></i></div>
+        </div>
+      </div>
+    </div>
+    <div class="w-full bg-[--primary-color-white] p-[10px] rounded-[10px] overscroll-x-auto">
+      <app-table [cols]="floorSchema" [products]="floorData" [isDeleteEnabled]="true" [isUpdateEnabled]="true"
+                 [isViewEnabled]="false"></app-table>
+    </div>
+  </div>
+  <div class="w-[calc((100%/2)-10px)] flex flex-col gap-[20px]">
+    <div class="space-header-crd">
+      <h3>Spaces</h3>
+      <div class="details">
+        <div class="totals">
+          <div class="flex w-[70%] justify-between">
+            <div class="value-area">
+              <p-tag value="Total" styleClass="bg-[--primary-color-blue]"></p-tag>
+              <span class="value">10</span>
+            </div>
+            <div class="value-area">
+              <p-tag value="Available" styleClass="bg-[--primary-color-green]"></p-tag>
+              <span class="value">3</span>
+            </div>
+            <div class="value-area">
+              <p-tag value="Filled" styleClass="bg-[--primary-color-yellow]"></p-tag>
+              <span class="value">7</span>
+            </div>
+          </div>
+          <div class="add-btn"> Add <i class="pi pi-fw pi-plus"></i></div>
+        </div>
+      </div>
+    </div>
+    <div class="w-full bg-[--primary-color-white] p-[10px] rounded-[10px] overscroll-x-auto">
+      <app-table [cols]="roomSchema" [products]="roomData" [isViewEnabled]="false"></app-table>
+    </div>
+  </div>
+</div>

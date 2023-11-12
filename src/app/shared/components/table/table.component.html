@@ -1,0 +1,32 @@
+<div class="card">
+  <p-table [columns]="cols" [value]="products" [tableStyle]="{ 'min-width': '500px' }">
+    <ng-template pTemplate="header" let-columns>
+      <tr>
+        <th *ngFor="let col of columns;let index=index" [id]="index+'col'">
+          {{ col.header }}
+        </th>
+        <th id="actions" class="" *ngIf="isDeleteEnabled|| isUpdateEnabled || isViewEnabled">Actions</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-rowData let-columns="columns">
+      <tr>
+        <td *ngFor="let col of columns">
+          {{ rowData[col.field] }}
+        </td>
+        <td>
+          <div class="flex" *ngIf="isDeleteEnabled|| isUpdateEnabled || isViewEnabled">
+            <button class="action-btn bg-[--primary-color-green]" *ngIf="isViewEnabled"
+                    (click)="viewElementId.emit(rowData['id'])">View
+            </button>
+            <button class="action-btn bg-[--primary-color-blue]" *ngIf="isUpdateEnabled"
+                    (click)="viewElementId.emit(rowData['id'])">Update
+            </button>
+            <button class="action-btn bg-[--primary-color-red]" *ngIf="isDeleteEnabled"
+                    (click)="viewElementId.emit(rowData['id'])">Delete
+            </button>
+          </div>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+</div>

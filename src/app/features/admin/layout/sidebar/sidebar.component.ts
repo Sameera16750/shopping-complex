@@ -1,10 +1,15 @@
 //  angular core
-import {Component, EventEmitter, Output, ViewEncapsulation} from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Output,
+  ViewEncapsulation,
+} from '@angular/core';
 //  angular common
-import {CommonModule} from '@angular/common';
+import { CommonModule } from '@angular/common';
 //  prime ng menu
-import {PanelMenuModule} from "primeng/panelmenu";
-import {MenuItem} from "primeng/api";
+import { PanelMenuModule } from 'primeng/panelmenu';
+import { MenuItem } from 'primeng/api';
 
 @Component({
   selector: 'app-sidebar',
@@ -12,12 +17,11 @@ import {MenuItem} from "primeng/api";
   imports: [CommonModule, PanelMenuModule],
   templateUrl: './sidebar.component.html',
   styleUrls: ['./sidebar.component.css'],
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.None,
 })
 export class SidebarComponent {
-
   // for change page title in admin panel
-  @Output() pageTitle = new EventEmitter<string>()
+  @Output() pageTitle = new EventEmitter<string>();
 
   // for menu item list
   items?: MenuItem[] = [
@@ -26,16 +30,16 @@ export class SidebarComponent {
       icon: 'pi pi-th-large',
       routerLink: '/admin',
       command: () => {
-        this.pageTitle.emit('dash board')
-      }
+        this.pageTitle.emit('dash board');
+      },
     },
     {
       label: 'Spaces',
       icon: 'pi pi-building',
       routerLink: 'spaces',
       command: () => {
-        this.pageTitle.emit('Complex Spaces')
-      }
+        this.pageTitle.emit('Complex Spaces');
+      },
     },
     {
       label: 'Stores',
@@ -46,26 +50,26 @@ export class SidebarComponent {
           icon: 'pi pi-tag',
           routerLink: 'store-categories',
           command: () => {
-            this.pageTitle.emit('store categories')
-          }
+            this.pageTitle.emit('store categories');
+          },
         },
         {
           label: 'Stores',
           icon: 'pi pi-mobile',
           routerLink: 'stores',
           command: () => {
-            this.pageTitle.emit('complex stores')
-          }
+            this.pageTitle.emit('complex stores');
+          },
         },
         {
           label: 'Store Owners',
           icon: 'pi pi-fw pi-user',
           routerLink: 'store-owners',
           command: () => {
-            this.pageTitle.emit('store owners')
-          }
-        }
-      ]
+            this.pageTitle.emit('store owners');
+          },
+        },
+      ],
     },
     {
       label: 'Maintenance',
@@ -76,18 +80,18 @@ export class SidebarComponent {
           icon: 'pi pi-building',
           routerLink: 'contractors',
           command: () => {
-            this.pageTitle.emit('maintenance contractors')
-          }
+            this.pageTitle.emit('maintenance contractors');
+          },
         },
         {
           label: 'Maintenance',
           icon: 'pi pi-cog pi-spin',
           routerLink: 'maintenance',
           command: () => {
-            this.pageTitle.emit('complex maintenance')
-          }
-        }
-      ]
+            this.pageTitle.emit('complex maintenance');
+          },
+        },
+      ],
     },
     {
       label: 'File',
@@ -99,23 +103,23 @@ export class SidebarComponent {
           items: [
             {
               label: 'Bookmark',
-              icon: 'pi pi-fw pi-bookmark'
+              icon: 'pi pi-fw pi-bookmark',
             },
             {
               label: 'Video',
-              icon: 'pi pi-fw pi-video'
-            }
-          ]
+              icon: 'pi pi-fw pi-video',
+            },
+          ],
         },
         {
           label: 'Delete',
-          icon: 'pi pi-fw pi-trash'
+          icon: 'pi pi-fw pi-trash',
         },
         {
           label: 'Export',
-          icon: 'pi pi-fw pi-external-link'
-        }
-      ]
+          icon: 'pi pi-fw pi-external-link',
+        },
+      ],
     },
     {
       label: 'Users',
@@ -123,11 +127,11 @@ export class SidebarComponent {
       items: [
         {
           label: 'New',
-          icon: 'pi pi-fw pi-user-plus'
+          icon: 'pi pi-fw pi-user-plus',
         },
         {
           label: 'Delete',
-          icon: 'pi pi-fw pi-user-minus'
+          icon: 'pi pi-fw pi-user-minus',
         },
         {
           label: 'Search',
@@ -139,17 +143,17 @@ export class SidebarComponent {
               items: [
                 {
                   label: 'Print',
-                  icon: 'pi pi-fw pi-print'
-                }
-              ]
+                  icon: 'pi pi-fw pi-print',
+                },
+              ],
             },
             {
               icon: 'pi pi-fw pi-bars',
-              label: 'List'
-            }
-          ]
-        }
-      ]
+              label: 'List',
+            },
+          ],
+        },
+      ],
     },
     {
       label: 'Events',
@@ -161,13 +165,13 @@ export class SidebarComponent {
           items: [
             {
               label: 'Save',
-              icon: 'pi pi-fw pi-calendar-plus'
+              icon: 'pi pi-fw pi-calendar-plus',
             },
             {
               label: 'Delete',
-              icon: 'pi pi-fw pi-calendar-minus'
-            }
-          ]
+              icon: 'pi pi-fw pi-calendar-minus',
+            },
+          ],
         },
         {
           label: 'Archieve',
@@ -175,11 +179,11 @@ export class SidebarComponent {
           items: [
             {
               label: 'Remove',
-              icon: 'pi pi-fw pi-calendar-minus'
-            }
-          ]
-        }
-      ]
-    }
+              icon: 'pi pi-fw pi-calendar-minus',
+            },
+          ],
+        },
+      ],
+    },
   ];
 }
