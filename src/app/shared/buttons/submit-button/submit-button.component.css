@@ -1,0 +1,5 @@
+.btn-submit{
+  all:unset;
+  @apply bg-[--primary-color-blue] text-[--primary-color-white] w-full p-[10px] text-center rounded-[3px] cursor-pointer
+  flex justify-center items-center gap-x-[10px]
+}

@@ -1,0 +1,5 @@
+<div class="flex mb-[20px]">
+  <button type="submit" class="btn-submit" (click)="isButtonClicked.emit(true)"><span>{{label}}</span>
+    <i class="pi pi-spin pi-spinner text-[--primary-color-white]" *ngIf="isLoading"></i>
+  </button>
+</div>

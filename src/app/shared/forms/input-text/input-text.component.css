@@ -1,0 +1,9 @@
+.text-input{
+  all:unset;
+  border: 1px solid #ced4da;
+  @apply p-[5px] rounded-[3px]
+}
+
+.text-input.invalid{
+  border: 1px solid var(--primary-color-red);
+}

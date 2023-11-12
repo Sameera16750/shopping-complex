@@ -1,0 +1,8 @@
+<div class="flex flex-col mb-[20px] gap-[5px]">
+  <label class="text-[15px]">{{label}}</label>
+  <input type="text" class="text-input"
+         [formControl]="$any(ngControl.control)"
+         [class.invalid]="ngControl.control?.invalid && ngControl.touched">
+  <span *ngIf="ngControl.control?.invalid && ngControl.touched" class="text-[13px] text-[--primary-color-red]">
+    please enter valid {{label}}</span>
+</div>

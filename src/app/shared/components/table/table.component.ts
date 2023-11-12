@@ -15,12 +15,16 @@ import { tableColumn } from '../../../core/models/tableData.model';
   styleUrls: ['./table.component.css'],
 })
 export class TableComponent {
+  // data list for table
   @Input() products:any[]=[];
+  // schema for table
   @Input() cols!: tableColumn[];
+  // for change visibility of action buttons
   @Input() isDeleteEnabled:boolean=true;
   @Input() isUpdateEnabled:boolean=true;
   @Input() isViewEnabled:boolean=true;
 
+  // for emmit any action button trigger
   @Output() deleteElementId= new EventEmitter<boolean>()
   @Output() updateElementId= new EventEmitter<boolean>()
   @Output() viewElementId= new EventEmitter<boolean>()

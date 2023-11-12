@@ -1,0 +1,6 @@
+<form [formGroup]="frmAddUpdateFloorDetails">
+  <app-input-text label="Floor Number" [formControl]="$any(formField['floorNumber'])"></app-input-text>
+  <app-input-text label="Total Spaces" [formControl]="$any(formField['spaceCount'])"></app-input-text>
+  <app-submit-button [label]="submitButtonLabel" [isLoading]="isSubmitButtonLoading"
+                     (isButtonClicked)="buttonSubmitted.emit(true)"></app-submit-button>
+</form>

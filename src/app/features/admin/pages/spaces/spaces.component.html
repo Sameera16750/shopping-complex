@@ -6,19 +6,21 @@
         <div class="totals">
           <div class="flex w-[70%] justify-between">
             <div class="value-area">
-              <p-tag value="Total" styleClass="bg-[--primary-color-blue]"></p-tag>
               <span class="value">10</span>
+              <p-tag value="Total" styleClass="bg-[--primary-color-blue]"></p-tag>
             </div>
             <div class="value-area">
-              <p-tag value="Available" styleClass="bg-[--primary-color-green]"></p-tag>
               <span class="value">3</span>
+              <p-tag value="Available" styleClass="bg-[--primary-color-green]"></p-tag>
             </div>
             <div class="value-area">
-              <p-tag value="Filled" styleClass="bg-[--primary-color-yellow]"></p-tag>
               <span class="value">7</span>
+              <p-tag value="Filled" styleClass="bg-[--primary-color-yellow]"></p-tag>
             </div>
           </div>
-          <div class="add-btn"> Add <i class="pi pi-fw pi-plus"></i></div>
+          <div class="add-btn" (click)="popupHeader='Add New Floor';visiblePopup=true;">
+            Add <i class="pi pi-fw pi-plus"></i>
+          </div>
         </div>
       </div>
     </div>
@@ -34,19 +36,21 @@
         <div class="totals">
           <div class="flex w-[70%] justify-between">
             <div class="value-area">
-              <p-tag value="Total" styleClass="bg-[--primary-color-blue]"></p-tag>
               <span class="value">10</span>
+              <p-tag value="Total" styleClass="bg-[--primary-color-blue]"></p-tag>
             </div>
             <div class="value-area">
-              <p-tag value="Available" styleClass="bg-[--primary-color-green]"></p-tag>
               <span class="value">3</span>
+              <p-tag value="Available" styleClass="bg-[--primary-color-green]"></p-tag>
             </div>
             <div class="value-area">
-              <p-tag value="Filled" styleClass="bg-[--primary-color-yellow]"></p-tag>
               <span class="value">7</span>
+              <p-tag value="Filled" styleClass="bg-[--primary-color-yellow]"></p-tag>
             </div>
           </div>
-          <div class="add-btn"> Add <i class="pi pi-fw pi-plus"></i></div>
+          <div class="add-btn" (click)="popupHeader='Add New Space';visiblePopup=true;">
+            Add <i class="pi pi-fw pi-plus"></i>
+          </div>
         </div>
       </div>
     </div>
@@ -55,3 +59,13 @@
     </div>
   </div>
 </div>
+
+<!--forms-->
+<p-dialog [header]="popupHeader" [(visible)]="visiblePopup">
+  <app-add-and-update-floor *ngIf="popupHeader==='Add New Floor'" submitButtonLabel="Save"
+                            [frmAddUpdateFloorDetails]="frmAddUpdateFloorDetails"
+                            (buttonSubmitted)="submitFloorData()"></app-add-and-update-floor>
+  <app-add-and-update-space [frmAddUpdateSpaceDetails]="frmAddUpdateSpaceDetails" *ngIf="popupHeader==='Add New Space'"
+                            [floorList]="floorList" (buttonSubmitted)="submitSpaceData()"
+                            submitButtonLabel="Save"></app-add-and-update-space>
+</p-dialog>

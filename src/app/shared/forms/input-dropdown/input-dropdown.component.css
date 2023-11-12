@@ -1,0 +1,23 @@
+.dropdown-input-main .p-component.p-dropdown {
+  padding: 7px 5px;
+  width: 100%;
+  border: 1px solid #ced4da !important;
+  box-shadow: none;
+  border-radius: 3px;
+}
+
+.dropdown-input-main.invalid .p-component.p-dropdown {
+  border: 1px solid var(--primary-color-red);
+}
+
+.dropdown-input-main .p-dropdown-label.p-inputtext.p-placeholder,
+.dropdown-input-main .p-element.p-dropdown-label.p-inputtext {
+  padding: 0;
+}
+
+.dropdown-input-main .p-dropdown-filter.p-inputtext.p-component {
+  border: 1px solid #ced4da !important;
+  box-shadow: none;
+  padding: 5px;
+  border-radius: 3px;
+}
