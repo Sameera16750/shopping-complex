@@ -4,20 +4,21 @@ import {Routes} from '@angular/router';
 // all app routs
 export const routes: Routes = [
   {
+    path:'',
+    redirectTo:'admin',
+    pathMatch:"full",
+  },
+  {
     path: 'admin',
     loadComponent: () => import('./features/admin/layout/main-layout/main-layout.component').then(mod => mod.MainLayoutComponent),
     children: [
       {
-        path: 'dashboard',
+        path: '',
         loadComponent: () => import('./features/admin/pages/dashboard/dashboard.component').then(mod => mod.DashboardComponent),
       },
       {
-        path: 'floors',
-        loadComponent: () => import('./features/admin/pages/floors/floors.component').then(mod => mod.FloorsComponent),
-      },
-      {
-        path: 'rooms',
-        loadComponent: () => import('./features/admin/pages/rooms/rooms.component').then(mod => mod.RoomsComponent),
+        path: 'spaces',
+        loadComponent: () => import('./features/admin/pages/spaces/spaces.component').then(mod => mod.SpacesComponent),
       },
       {
         path: 'store-categories',

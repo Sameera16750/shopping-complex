@@ -2,12 +2,12 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'app-rooms',
+  selector: 'app-spaces',
   standalone: true,
   imports: [CommonModule],
-  templateUrl: './rooms.component.html',
-  styleUrls: ['./rooms.component.css']
+  templateUrl: './spaces.component.html',
+  styleUrls: ['./spaces.component.css']
 })
-export class RoomsComponent {
+export class SpacesComponent {
 
 }

@@ -24,32 +24,18 @@ export class SidebarComponent {
     {
       label: 'Dash Board',
       icon: 'pi pi-th-large',
-      routerLink: 'dashboard',
+      routerLink: '/admin',
       command: () => {
         this.pageTitle.emit('dash board')
       }
     },
     {
       label: 'Spaces',
-      icon: 'pi pi-map',
-      items: [
-        {
-          label: 'Floors',
-          icon: 'pi pi-building',
-          routerLink: 'floors',
-          command: () => {
-            this.pageTitle.emit('Complex floors')
-          }
-        },
-        {
-          label: 'Rooms',
-          icon: 'pi pi-tablet',
-          routerLink: 'rooms',
-          command: () => {
-            this.pageTitle.emit('Floor rooms')
-          }
-        }
-      ]
+      icon: 'pi pi-building',
+      routerLink: 'spaces',
+      command: () => {
+        this.pageTitle.emit('Complex Spaces')
+      }
     },
     {
       label: 'Stores',
