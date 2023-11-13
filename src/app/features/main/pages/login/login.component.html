@@ -1,0 +1,8 @@
+<div class="flex w-(100vw) h-[100vh] justify-center items-center">
+  <form [formGroup]="frmLogin" class="p-[20px] rounded-[10px] login-crd">
+    <h1 class="text-center text-[18px] font-[500] uppercase mb-[20px]">Sign In</h1>
+    <app-input-text label="User Name" [formControl]="$any(formField['userName'])"></app-input-text>
+    <app-input-text type="password" label="Password" [formControl]="$any(formField['password'])"></app-input-text>
+    <app-submit-button label="Sign In" (isButtonClicked)="submitLogin()"></app-submit-button>
+  </form>
+</div>

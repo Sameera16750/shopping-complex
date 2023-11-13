@@ -5,8 +5,7 @@ import {Routes} from '@angular/router';
 export const routes: Routes = [
   {
     path:'',
-    redirectTo:'admin',
-    pathMatch:"full",
+    loadComponent:()=>import('./features/main/pages/login/login.component').then(mod=>mod.LoginComponent)
   },
   {
     path: 'admin',

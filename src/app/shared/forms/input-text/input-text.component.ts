@@ -16,6 +16,10 @@ export class InputTextComponent implements ControlValueAccessor {
 
   // for form label
   @Input()label!:string;
+
+  // for input type
+  @Input()type:string='text';
+
   constructor(@Self() public ngControl: NgControl) {
     this.ngControl.valueAccessor = this;
   }
