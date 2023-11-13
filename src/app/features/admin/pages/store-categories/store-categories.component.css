@@ -1,0 +1,7 @@
+.categories-header-crd .value-area{
+  @apply flex justify-center items-center flex-col gap-[10px]
+}
+
+.categories-header-crd .value {
+  @apply m-auto text-[20px] font-[700]
+}
