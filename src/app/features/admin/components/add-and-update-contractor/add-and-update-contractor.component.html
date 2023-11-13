@@ -1,0 +1,9 @@
+<form [formGroup]="frmContractor" class="w-full flex flex-col">
+  <h3 class="text-center text-[18px] font-[500] uppercase mb-[20px]">{{frmTitle}}</h3>
+  <app-input-text [formControl]="$any(formFields['contractorName'])" label="Contractor Name"></app-input-text>
+  <app-input-text [formControl]="$any(formFields['contactNo'])" label="Contact No"></app-input-text>
+  <app-input-text [formControl]="$any(formFields['emailAddress'])" label="Email Address"></app-input-text>
+  <app-input-text [formControl]="$any(formFields['address'])" label="Address"></app-input-text>
+  <app-submit-button [label]="submitBtnLabel" [isLoading]="submitButtonLoading"
+                     (isButtonClicked)="formSubmitting.emit(true)"></app-submit-button>
+</form>

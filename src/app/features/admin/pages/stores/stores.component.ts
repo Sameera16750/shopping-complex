@@ -9,17 +9,19 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
+// prime ng
+import { TagModule } from 'primeng/tag';
 // components
 import { AddAndUpdateStoreComponent } from '../../components/add-and-update-store/add-and-update-store.component';
 import {dropDownValues, InputDropdownComponent} from '../../../../shared/forms/input-dropdown/input-dropdown.component';
 import { InputTextComponent } from '../../../../shared/forms/input-text/input-text.component';
 import { TableComponent } from '../../../../shared/components/table/table.component';
+// models
 import { tableColumn } from '../../../../core/models/tableData.model';
 import {
   pendingPaymentTableData,
   storeTableData,
 } from '../../../../core/models/store.model';
-import { TagModule } from 'primeng/tag';
 
 @Component({
   selector: 'app-stores',
