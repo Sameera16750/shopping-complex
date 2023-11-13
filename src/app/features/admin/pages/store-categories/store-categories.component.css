@@ -1,5 +1,4 @@
 .categories-header-crd .value-area{
-  box-shadow: var(--crd-box-shadow-1);
   @apply flex justify-center items-center flex-col gap-[10px]
 }
 
