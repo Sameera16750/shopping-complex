@@ -29,6 +29,8 @@ export class InputDropdownComponent implements ControlValueAccessor{
   @Input() label!: string;
   // for dropdown lis
   @Input()options!: dropDownValues[];
+  // for placeholder
+  @Input()placeholder:string='';
 
   constructor(@Self() public ngControl: NgControl) {
     this.ngControl.valueAccessor = this;

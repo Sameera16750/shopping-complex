@@ -1,6 +1,15 @@
 <form [formGroup]="frmStore">
+  <h3 class="text-center text-[18px] font-[500] uppercase">{{frmTitle}}</h3>
   <app-input-text [formControl]="$any(FormFields['storeName'])" label="Store Name"></app-input-text>
-  <app-input-dropdown [formControl]="$any(FormFields['storeOwner'])" label="Store owner"></app-input-dropdown>
+  <app-input-dropdown [formControl]="$any(FormFields['storeOwner'])" [options]="ownerList"
+                      label="Store owner"></app-input-dropdown>
+  <app-input-dropdown [formControl]="$any(FormFields['storeCategory'])" [options]="ownerList"
+                      label="Store Category"></app-input-dropdown>
   <app-input-text [formControl]="$any(FormFields['monthlyPaymentValue'])" label="Monthly Charge"></app-input-text>
-  <app-input-dropdown [formControl]="$any(FormFields['storeOwner'])" label="Space Number"></app-input-dropdown>
+  <app-input-text [formControl]="$any(FormFields['keyMoney'])" label="Key Money"></app-input-text>
+  <app-input-dropdown [formControl]="$any(FormFields['spaceNumber'])" [options]="availableRoomList"
+                      label="Space Number"></app-input-dropdown>
+  <app-input-date [formControl]="$any(FormFields['rentalTimeDuration'])" label="Time Durations"></app-input-date>
+  <app-submit-button [label]="btnLabel" (isButtonClicked)="isSubmitted.emit(true)"
+                     [isLoading]="isBtnLoading"></app-submit-button>
 </form>

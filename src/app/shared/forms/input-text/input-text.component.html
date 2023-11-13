@@ -2,7 +2,8 @@
   <label class="text-[15px]">{{label}}</label>
   <input [type]="type" class="text-input"
          [formControl]="$any(ngControl.control)"
-         [class.invalid]="ngControl.control?.invalid && ngControl.touched">
+         [class.invalid]="ngControl.control?.invalid && ngControl.touched"
+         [placeholder]="placeholder">
   <span *ngIf="ngControl.control?.invalid && ngControl.touched" class="text-[13px] text-[--primary-color-red]">
     please enter valid {{label}}</span>
 </div>

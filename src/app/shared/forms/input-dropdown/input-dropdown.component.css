@@ -7,7 +7,7 @@
 }
 
 .dropdown-input-main.invalid .p-component.p-dropdown {
-  border: 1px solid var(--primary-color-red);
+  border: 1px solid var(--primary-color-red) !important;
 }
 
 .dropdown-input-main .p-dropdown-label.p-inputtext.p-placeholder,
