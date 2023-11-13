@@ -4,6 +4,7 @@ import {Component, EventEmitter, Input, Output} from '@angular/core';
 import { CommonModule } from '@angular/common';
 // angular forms
 import {FormGroup, ReactiveFormsModule} from "@angular/forms";
+// components
 import {InputTextComponent} from "../../../../shared/forms/input-text/input-text.component";
 import {SubmitButtonComponent} from "../../../../shared/buttons/submit-button/submit-button.component";
 
@@ -31,6 +32,7 @@ export class AddAndUpdateContractorComponent {
   // for identify form submitted
   @Output() formSubmitting = new EventEmitter<boolean>();
 
+  // for access form controls
   get formFields() {
     return this.frmContractor.controls;
   }

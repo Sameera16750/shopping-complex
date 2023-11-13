@@ -8,8 +8,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AddAndUpdateContractorComponent } from '../../components/add-and-update-contractor/add-and-update-contractor.component';
 import { TableComponent } from '../../../../shared/components/table/table.component';
 // models
-import { tableColumn } from '../../../../core/models/tableData.model';
-import {contractorTableData} from "../../../../core/models/contractor.model";
+import { TableColumnModel } from '../../../../core/models/tableData.model';
+import {ContractorTableDataModel} from "../../../../core/models/contractor.model";
 
 @Component({
   selector: 'app-contractors',
@@ -22,14 +22,14 @@ export class ContractorsComponent {
   // for contractor details
   frmContractor!: FormGroup;
   // for contractor table schema
-  contractorTableSchema: tableColumn[] = [
+  contractorTableSchema: TableColumnModel[] = [
     { field: 'contractorName', header: 'Contractor Name' },
     { field: 'contactNo', header: 'Contact No' },
     { field: 'emailAddress', header: 'Email Address' },
     { field: 'address', header: 'Address' },
   ];
   // for contractor table data
-  contractorTableData:contractorTableData[]=[
+  contractorTableData:ContractorTableDataModel[]=[
     {id:1,contractorName:'Sameera',address:'No 04,kandy',contactNo:'0785485682',emailAddress:'sameera@gmail.com'},
     {id:1,contractorName:'Sameera',address:'No 04,kandy',contactNo:'0785485682',emailAddress:'sameera@gmail.com'},
     {id:1,contractorName:'Sameera',address:'No 04,kandy',contactNo:'0785485682',emailAddress:'sameera@gmail.com'},

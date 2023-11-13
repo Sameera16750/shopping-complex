@@ -1,1 +1,29 @@
-<p>maintenance works!</p>
+<div class="flex flex-wrap w-full gap-[20px]">
+  <div class="w-[calc((100%/3)-10px)] flex flex-col gap-[20px]">
+    <div class="p-[15px] rounded-[10px] bg-[--primary-color-white] flex gap-[20px] justify-between">
+      <div class="flex flex-col justify-center items-center">
+        <span class="text-[25px] font-[700]">70</span>
+        <p-tag value="Total" styleClass="bg-[--primary-color-blue]"></p-tag>
+      </div>
+      <div class="flex flex-col justify-center items-center">
+        <span class="text-[25px] font-[700]">60</span>
+        <p-tag value="Ongoing" styleClass="bg-[--primary-color-green]"></p-tag>
+      </div>
+      <div class="flex flex-col justify-center items-center">
+        <span class="text-[25px] font-[700]">10</span>
+        <p-tag value="Completed" styleClass="bg-[--primary-color-red]"></p-tag>
+      </div>
+    </div>
+
+    <div class="p-[15px] rounded-[10px] bg-[--primary-color-white]">
+      <app-add-and-update-maintenance [frmMaintenance]="frmMaintenance" frmTitle="Add New Maintenance"
+                                      (isSubmitted)="saveMaintenance()" btnLabel="Save"></app-add-and-update-maintenance>
+    </div>
+  </div>
+
+  <div class="w-[calc(((100%/3)*2)-10px)] flex flex-col gap-[20px]">
+    <div class="flex flex-col w-full p-[15px] gap-[15px] rounded-[10px] bg-[--primary-color-white]">
+      <app-table [cols]="maintenanceTableSchema" [products]="maintenanceTableData"></app-table>
+    </div>
+  </div>
+</div>

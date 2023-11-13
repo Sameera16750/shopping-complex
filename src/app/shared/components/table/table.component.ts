@@ -5,7 +5,7 @@ import { CommonModule } from '@angular/common';
 //  prime ng
 import { TableModule } from 'primeng/table';
 //  model
-import { tableColumn } from '../../../core/models/tableData.model';
+import { TableColumnModel } from '../../../core/models/tableData.model';
 
 @Component({
   selector: 'app-table',
@@ -18,7 +18,7 @@ export class TableComponent {
   // data list for table
   @Input() products:any[]=[];
   // schema for table
-  @Input() cols!: tableColumn[];
+  @Input() cols!: TableColumnModel[];
   // for change visibility of action buttons
   @Input() isDeleteEnabled:boolean=true;
   @Input() isUpdateEnabled:boolean=true;

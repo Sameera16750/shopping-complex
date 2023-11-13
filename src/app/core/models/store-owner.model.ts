@@ -1,4 +1,4 @@
-export type storeOwnerTableData={
+export type StoreOwnerTableDataModel ={
   id:number;
   firstName:string;
   lastName:string;

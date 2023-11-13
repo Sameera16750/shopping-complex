@@ -1,4 +1,4 @@
-export type categoryTable = {
+export type CategoryTableModel = {
   id:number,
   categoryName: string;
   status: string;

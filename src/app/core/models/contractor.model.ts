@@ -1,4 +1,4 @@
-export type contractorTableData={
+export type ContractorTableDataModel ={
   id:number;
   contractorName:string;
   contactNo:string;

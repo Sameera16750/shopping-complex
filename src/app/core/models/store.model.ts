@@ -1,4 +1,4 @@
-export type storeTableData={
+export type StoreTableDataModel ={
   id:number;
   shopName:string;
   shopCategory:string;
@@ -6,7 +6,7 @@ export type storeTableData={
   rentalTimeDuration:string;
   spaceNumber:string;
 }
-export type pendingPaymentTableData={
+export type PendingPaymentTableDataModel ={
   id:number;
   shopName:string;
   year:string;

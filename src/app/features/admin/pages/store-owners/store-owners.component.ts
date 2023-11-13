@@ -7,8 +7,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 //  components
 import { AddAndUpdateStoreOwnerComponent } from '../../components/add-and-update-store-owner/add-and-update-store-owner.component';
 import { TableComponent } from '../../../../shared/components/table/table.component';
-import { tableColumn } from '../../../../core/models/tableData.model';
-import { storeOwnerTableData } from '../../../../core/models/store-owner.model';
+import { TableColumnModel } from '../../../../core/models/tableData.model';
+import { StoreOwnerTableDataModel } from '../../../../core/models/store-owner.model';
 
 @Component({
   selector: 'app-store-owners',
@@ -21,7 +21,7 @@ export class StoreOwnersComponent {
   // for store owner details
   frmStoreOwner!: FormGroup;
   // for store owner table schema
-  frmOwnerTableSchema: tableColumn[] = [
+  frmOwnerTableSchema: TableColumnModel[] = [
     {field:'firstName',header:'First Name'},
     {field:'lastName',header:'Last Name'},
     {field:'contactNo',header:'Contact No'},
@@ -30,7 +30,7 @@ export class StoreOwnersComponent {
     {field:'nic',header:'NIC No'}
   ];
   // for store owner table data
-  frmOwnerTableData: storeOwnerTableData[] = [
+  frmOwnerTableData: StoreOwnerTableDataModel[] = [
     {
       id: 1,
       firstName: 'Sameera',

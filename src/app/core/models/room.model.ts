@@ -1,4 +1,4 @@
-export type roomTableData={
+export type RoomTableDataModel ={
   id:number,
   roomNo:string,
   floorNo:string,

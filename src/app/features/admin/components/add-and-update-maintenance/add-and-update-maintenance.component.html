@@ -1,0 +1,11 @@
+<form [formGroup]="frmMaintenance">
+  <h3 class="text-center text-[18px] font-[500] uppercase mb-[20px]">{{frmTitle}}</h3>
+  <app-input-text label="Maintenance Type" [formControl]="$any(formFields['maintenanceType'])"></app-input-text>
+  <app-input-text label="Location" [formControl]="$any(formFields['location'])"></app-input-text>
+  <app-input-text label="Contractor" [formControl]="$any(formFields['contractor'])"></app-input-text>
+  <app-input-date label="Time Duration" [formControl]="$any(formFields['Duration'])"></app-input-date>
+  <app-input-text label="Total Charge" [formControl]="$any(formFields['totalCharge'])"></app-input-text>
+  <app-input-text label="Advance Payment" [formControl]="$any(formFields['advanceFee'])"></app-input-text>
+  <app-submit-button [label]="btnLabel"
+                     (isButtonClicked)="isSubmitted.emit(true)"  [isLoading]="isBtnLoading"></app-submit-button>
+</form>

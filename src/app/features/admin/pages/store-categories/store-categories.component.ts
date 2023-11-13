@@ -9,8 +9,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 //  components
 import { AddAndUpdateStoreCategoriesComponent } from '../../components/add-and-update-store-categories/add-and-update-store-categories.component';
 import { TableComponent } from '../../../../shared/components/table/table.component';
-import { tableColumn } from '../../../../core/models/tableData.model';
-import { categoryTable } from '../../../../core/models/category.model';
+import { TableColumnModel } from '../../../../core/models/tableData.model';
+import { CategoryTableModel } from '../../../../core/models/category.model';
 
 @Component({
   selector: 'app-store-categories',
@@ -26,13 +26,13 @@ import { categoryTable } from '../../../../core/models/category.model';
 })
 export class StoreCategoriesComponent {
   // table schema
-  categoryTableSchema: tableColumn[] = [
+  categoryTableSchema: TableColumnModel[] = [
     { field: 'categoryName', header: 'Category Name' },
     { field: 'status', header: 'Status' },
     { field: 'totalSpaces', header: 'Total Spaces' },
   ];
   // table data
-  categoryTableData: categoryTable[] = [
+  categoryTableData: CategoryTableModel[] = [
     { id: 1, categoryName: 'beauty', status: 'Active', totalSpaces: 10 },
     { id: 2, categoryName: 'beauty', status: 'Active', totalSpaces: 10 },
     { id: 3, categoryName: 'beauty', status: 'Active', totalSpaces: 10 },

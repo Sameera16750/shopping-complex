@@ -1,5 +1,5 @@
 // example model for user
-export type userModel = {
+export type UserModel = {
   userName: string;
   password: string;
 }

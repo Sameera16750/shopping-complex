@@ -1,4 +1,4 @@
-export type floorTableData={
+export type FloorTableDataModel ={
   id:number,
   floorNo:string,
   totalRoomCount:number,

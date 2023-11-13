@@ -17,10 +17,10 @@ import {dropDownValues, InputDropdownComponent} from '../../../../shared/forms/i
 import { InputTextComponent } from '../../../../shared/forms/input-text/input-text.component';
 import { TableComponent } from '../../../../shared/components/table/table.component';
 // models
-import { tableColumn } from '../../../../core/models/tableData.model';
+import { TableColumnModel } from '../../../../core/models/tableData.model';
 import {
-  pendingPaymentTableData,
-  storeTableData,
+  PendingPaymentTableDataModel,
+  StoreTableDataModel,
 } from '../../../../core/models/store.model';
 
 @Component({
@@ -62,14 +62,14 @@ export class StoresComponent implements OnInit {
     { name: 'Tilina', id: 4 },
   ];
   // table schema for pending payment
-  pendingPaymentTableSchema: tableColumn[] = [
+  pendingPaymentTableSchema: TableColumnModel[] = [
     { field: 'shopName', header: 'Shop Name' },
     { field: 'year', header: 'Year' },
     { field: 'month', header: 'Month' },
     { field: 'totalPayment', header: 'Total Payment' },
   ];
   // table data for pending payments
-  pendingPaymentTableData: pendingPaymentTableData[] = [
+  pendingPaymentTableData: PendingPaymentTableDataModel[] = [
     {
       id: 1,
       shopName: 'Thilakawardana',
@@ -107,7 +107,7 @@ export class StoresComponent implements OnInit {
     },
   ];
   // table schema for store
-  storeTableSchema: tableColumn[] = [
+  storeTableSchema: TableColumnModel[] = [
     { field: 'spaceNumber', header: 'Space Number' },
     { field: 'shopName', header: 'Shop Name' },
     { field: 'shopCategory', header: 'Shop Category' },
@@ -115,7 +115,7 @@ export class StoresComponent implements OnInit {
     { field: 'rentalTimeDuration', header: 'Rental Time Duration' },
   ];
   // table data for pending payments
-  storeTableData: storeTableData[] = [
+  storeTableData: StoreTableDataModel[] = [
     {
       id: 1,
       ownerName: 'sameera',

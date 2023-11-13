@@ -13,9 +13,9 @@ import {AddAndUpdateFloorComponent} from "../../components/add-and-update-floor/
 import {AddAndUpdateSpaceComponent} from "../../components/add-and-update-space/add-and-update-space.component";
 import {dropDownValues} from "../../../../shared/forms/input-dropdown/input-dropdown.component";
 //  models
-import { tableColumn } from '../../../../core/models/tableData.model';
-import {floorTableData} from "../../../../core/models/floor.model";
-import {roomTableData} from "../../../../core/models/room.model";
+import { TableColumnModel } from '../../../../core/models/tableData.model';
+import {FloorTableDataModel} from "../../../../core/models/floor.model";
+import {RoomTableDataModel} from "../../../../core/models/room.model";
 
 
 @Component({
@@ -44,14 +44,14 @@ export class SpacesComponent {
   frmAddUpdateFloorDetails!: FormGroup;
 
   // schema for floor table
-  floorSchema: tableColumn[] = [
+  floorSchema: TableColumnModel[] = [
     { field: 'floorNo', header: 'Floor' },
     { field: 'totalRoomCount', header: 'Spaces' },
     { field: 'availableRoomCount', header: 'Available Spaces' },
     { field: 'filledRoomCount', header: 'Rented Spaces' },
   ];
   // data for floor table
-  floorData: floorTableData[] = [
+  floorData: FloorTableDataModel[] = [
     {
       id: 1,
       floorNo: 'Gound',
@@ -89,13 +89,13 @@ export class SpacesComponent {
     },
   ];
   // schema for spaces table
-  roomSchema: tableColumn[] = [
+  roomSchema: TableColumnModel[] = [
     { field: 'roomNo', header: 'Space' },
     { field: 'floorNo', header: 'Floor' },
     { field: 'availability', header: 'Availability' },
   ];
   // data for spaces table
-  roomData: roomTableData[] = [
+  roomData: RoomTableDataModel[] = [
     {
       id: 1,
       roomNo: 'AB',
