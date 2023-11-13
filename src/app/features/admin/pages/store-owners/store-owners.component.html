@@ -1,1 +1,13 @@
-<p>store-owners works!</p>
+<div class="flex gap-[20px] flex-wrap">
+  <div class="w-[calc((100%/3)-10px)] rounded-[10px] bg-[--primary-color-white] p-[15px]">
+    <app-add-and-update-store-owner [frmOwner]="frmStoreOwner"
+                                    (formSubmitting)="saveStoreOwner()"
+                                    [submitButtonLoading]="false"
+                                    submitBtnLabel="save"
+                                    frmTitle="Add New Owner"></app-add-and-update-store-owner>
+  </div>
+  <div class="w-[calc(((100%/3)*2)-10px)] rounded-[10px] bg-[--primary-color-white] p-[15px]">
+    <app-table [isDeleteEnabled]="false" [isViewEnabled]="false" [products]="frmOwnerTableData"
+               [cols]="frmOwnerTableSchema"></app-table>
+  </div>
+</div>

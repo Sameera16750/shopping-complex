@@ -1,0 +1,11 @@
+<form [formGroup]="frmOwner">
+  <h3 class="text-center text-[18px] font-[500] uppercase">{{frmTitle}}</h3>
+  <app-input-text label="Firs Name" [formControl]="$any(frmFields['firstName'])"></app-input-text>
+  <app-input-text label="Last Name" [formControl]="$any(frmFields['lastName'])"></app-input-text>
+  <app-input-text label="Address" [formControl]="$any(frmFields['address'])"></app-input-text>
+  <app-input-text label="Contact No" [formControl]="$any(frmFields['contactNo'])"></app-input-text>
+  <app-input-text label="Email Address" [formControl]="$any(frmFields['email'])"></app-input-text>
+  <app-input-text label="NIC" [formControl]="$any(frmFields['nic'])"></app-input-text>
+  <app-submit-button [label]="submitBtnLabel" [isLoading]="submitButtonLoading"
+                     (isButtonClicked)="formSubmitting.emit(true)"></app-submit-button>
+</form>
