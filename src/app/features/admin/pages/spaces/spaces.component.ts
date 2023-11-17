@@ -6,6 +6,9 @@ import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 //  prime ng
 import { TagModule } from 'primeng/tag';
+import { ToastModule } from 'primeng/toast';
+import { ConfirmationService, MessageService } from 'primeng/api';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
 //  components
 import { TableComponent } from '../../../../shared/components/table/table.component';
 import { DialogModule } from 'primeng/dialog';
@@ -16,14 +19,15 @@ import { dropDownValues } from '../../../../shared/forms/input-dropdown/input-dr
 import { TableColumnModel } from '../../../../core/models/tableData.model';
 import {
   FloorRequest,
-  FloorResponse,
   FloorTableDataModel,
 } from '../../../../core/models/floor.model';
-import { RoomTableDataModel } from '../../../../core/models/room.model';
+// services
+import {
+  RoomTableDataModel,
+  SpaceRequest,
+} from '../../../../core/models/room.model';
 import { FloorService } from '../../../../core/services/floor.service';
 import { SpaceService } from '../../../../core/services/space.service';
-import { ToastModule } from 'primeng/toast';
-import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-spaces',
@@ -36,8 +40,9 @@ import { MessageService } from 'primeng/api';
     AddAndUpdateFloorComponent,
     AddAndUpdateSpaceComponent,
     ToastModule,
+    ConfirmDialogModule,
   ],
-  providers: [MessageService],
+  providers: [MessageService, ConfirmationService],
   templateUrl: './spaces.component.html',
   styleUrls: ['./spaces.component.css'],
 })
@@ -77,6 +82,7 @@ export class SpacesComponent implements OnInit {
     private frmBuilder: FormBuilder,
     private messageService: MessageService,
     private floorService: FloorService,
+    private confirmationService: ConfirmationService,
     private spaceService: SpaceService
   ) {
     this.initializeForms();
@@ -92,7 +98,7 @@ export class SpacesComponent implements OnInit {
     this.frmAddUpdateSpaceDetails = this.frmBuilder.group({
       id: [0, []],
       spaceNumber: ['', [Validators.required]],
-      floorNumber: ['', [Validators.required]],
+      floorNumber: [{ id: 0, number: '' }, [Validators.required]],
       spaceSize: ['', [Validators.required]],
     });
 
@@ -129,18 +135,27 @@ export class SpacesComponent implements OnInit {
       console.log(res);
       this.roomData = res
         .filter((item) => item.status != 0)
-        .map((item) => ({
-          id: item.id,
-          floorNo: item.floorNavigation.floorNumber,
-          floorId: item.floorNavigation.id,
-          roomNo: item.spaceNumber,
-          availability:
-            item.status === 1
-              ? 'Available'
-              : item.status === 2
-              ? 'Filled'
-              : 'Deleted',
-        }));
+        .map((item) => {
+          let availability: string;
+          switch (item.status) {
+            case 1:
+              availability = 'Available';
+              break;
+            case 2:
+              availability = 'Filled';
+              break;
+            default:
+              availability = 'Deleted';
+              break;
+          }
+          return {
+            id: item.id,
+            floorNo: item.floorNavigation.floorNumber,
+            floorId: item.floorNavigation.id,
+            roomNo: item.spaceNumber,
+            availability: availability,
+          };
+        });
     });
   }
 
@@ -160,14 +175,15 @@ export class SpacesComponent implements OnInit {
           detail: res.msg,
         });
         this.frmAddUpdateFloorDetails.reset();
-        window.location.reload();
+        if (res.typ === 1) {
+          window.location.reload();
+        }
       });
     }
   }
 
   // for open update floor data popup
   openUpdateFloorPopup(id: number): void {
-    // console.log(floorID);
     this.isFloorPopup = true;
     this.floorDataSubmitType = 'update';
     this.floorService.getFloorById(id).subscribe((res) => {
@@ -198,23 +214,35 @@ export class SpacesComponent implements OnInit {
             summary: res.typ === 1 ? 'Success' : 'Error',
             detail: res.msg,
           });
-          if(res.typ===1){
+          if (res.typ === 1) {
             window.location.reload();
           }
         });
     }
   }
 
-  // for delete floor data
-  deleteFloorData(id:number):void{
+  // delete confirmation popup for floor details
+  confirmFloorDataDeletion(id: number) {
+    this.confirmationService.confirm({
+      message: 'Do you want to delete this record?',
+      header: 'Delete Confirmation',
+      icon: 'pi pi-info-circle',
+      accept: () => {
+        this.deleteFloorData(id);
+      },
+      reject: () => {},
+    });
+  }
 
-    this.floorService.deleteFloor(id).subscribe(res=>{
+  // for delete floor data
+  deleteFloorData(id: number): void {
+    this.floorService.deleteFloor(id).subscribe((res) => {
       this.messageService.add({
         severity: res.typ === 1 ? 'success' : 'error',
         summary: res.typ === 1 ? 'Success' : 'Error',
         detail: res.msg,
       });
-      if(res.typ===1){
+      if (res.typ === 1) {
         window.location.reload();
       }
     });
@@ -223,6 +251,47 @@ export class SpacesComponent implements OnInit {
   // for submit space data
   submitSpaceData(): void {
     this.frmAddUpdateSpaceDetails.markAllAsTouched();
-    console.log(this.frmAddUpdateSpaceDetails.getRawValue());
+    if (this.frmAddUpdateSpaceDetails.valid) {
+      let data: SpaceRequest = {
+        spaceNumber: this.frmAddUpdateSpaceDetails.get('spaceNumber')?.value,
+        floor: this.frmAddUpdateSpaceDetails.get('floorNumber')?.value.id,
+        spaceSize: this.frmAddUpdateSpaceDetails.get('spaceSize')?.value,
+        status: 1,
+      };
+
+      this.spaceService.saveFloor(data).subscribe((res) => {
+        this.messageService.add({
+          severity: res.typ === 1 ? 'success' : 'error',
+          summary: res.typ === 1 ? 'Success' : 'Error',
+          detail: res.msg,
+        });
+        this.frmAddUpdateFloorDetails.reset();
+        if (res.typ === 1) {
+          window.location.reload();
+        }
+      });
+    }
+  }
+
+  // for open update floor data popup
+  openUpdateSpacePopup(id: number): void {
+    this.isFloorPopup = false;
+    this.spaceDataSubmitType = 'update';
+    this.spaceService.getSpaceById(id).subscribe((res) => {
+      console.log(res)
+      this.frmAddUpdateSpaceDetails.get('id')?.setValue(res.id);
+      this.frmAddUpdateSpaceDetails
+        .get('spaceNumber')
+        ?.setValue(res.spaceNumber);
+      this.frmAddUpdateFloorDetails
+        .get('spaceSize')
+        ?.setValue(res.spaceSize);
+      this.frmAddUpdateFloorDetails
+        .get('floorNumber')
+        ?.setValue({id:res.floorNavigation.id,number:res.floorNavigation.floorNumber});
+      this.visiblePopup = true;
+
+      console.log(this.frmAddUpdateSpaceDetails.getRawValue());
+    });
   }
 }

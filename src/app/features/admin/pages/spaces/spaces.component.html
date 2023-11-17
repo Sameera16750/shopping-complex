@@ -26,7 +26,7 @@
     </div>
     <div class="w-full bg-[--primary-color-white] p-[10px] rounded-[10px] overscroll-x-auto">
       <app-table [cols]="floorSchema" [products]="floorData" (updateElementId)="openUpdateFloorPopup($event)"
-                 [isDeleteEnabled]="true" [isUpdateEnabled]="true"
+                 [isDeleteEnabled]="true" (deleteElementId)="confirmFloorDataDeletion($event)" [isUpdateEnabled]="true"
                  [isViewEnabled]="false"></app-table>
     </div>
   </div>
@@ -49,14 +49,15 @@
               <p-tag value="Filled" styleClass="bg-[--primary-color-yellow]"></p-tag>
             </div>
           </div>
-          <div class="add-btn" (click)="isFloorPopup=false;visiblePopup=true;">
+          <div class="add-btn" (click)="isFloorPopup=false;visiblePopup=true;spaceDataSubmitType='save'">
             Add <i class="pi pi-fw pi-plus"></i>
           </div>
         </div>
       </div>
     </div>
     <div class="w-full bg-[--primary-color-white] p-[10px] rounded-[10px] overscroll-x-auto">
-      <app-table [cols]="roomSchema" [products]="roomData" [isViewEnabled]="false"></app-table>
+      <app-table [cols]="roomSchema" [products]="roomData" [isViewEnabled]="false"
+                 (updateElementId)="openUpdateSpacePopup($event)"></app-table>
     </div>
   </div>
 </div>
@@ -64,9 +65,9 @@
 <!--forms-->
 <p-dialog
   [header]="
-  isFloorPopup && floorDataSubmitType==='save'?'Add New Floor'
-  :isFloorPopup && floorDataSubmitType==='update'?'Update Floor'
-  :isFloorPopup! && spaceDataSubmitType==='save'?'Add New Space':'Update Space'" [(visible)]="visiblePopup">
+  (isFloorPopup && floorDataSubmitType==='save') ? 'Add New Floor' :
+  (isFloorPopup && floorDataSubmitType==='update') ? 'Update Floor' :
+  (!isFloorPopup && spaceDataSubmitType==='save') ? 'Add New Space' : 'Update Space'" [(visible)]="visiblePopup">
   <app-add-and-update-floor *ngIf="isFloorPopup" [submitButtonLabel]="floorDataSubmitType==='save'?'Save':'Update'"
                             [frmAddUpdateFloorDetails]="frmAddUpdateFloorDetails"
                             (buttonSubmitted)="floorDataSubmitType==='save'?submitFloorData():updateFloorData()">
@@ -78,3 +79,5 @@
 </p-dialog>
 
 <p-toast></p-toast>
+
+<p-confirmDialog [style]="{width: '30vw'}"></p-confirmDialog>

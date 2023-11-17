@@ -4,6 +4,7 @@ import { Injectable } from '@angular/core';
 import {ApiService} from "../services/api.service";
 import {Observable} from "rxjs";
 import {HttpResponseModel} from "../../core/models/http-response.model";
+import {SpaceRequest} from "../../core/models/room.model";
 
 @Injectable({
   providedIn: 'root'
@@ -16,8 +17,21 @@ export class SpaceRepository {
     //
   }
 
+  // for get all spaces
   getAllSpaces():Observable<HttpResponseModel>{
-    const url=`${this.baseUrl}/get_all`
+    const url:string=`${this.baseUrl}/get_all`;
     return this.apiService.get<HttpResponseModel>(url);
+  }
+
+  // for save space
+  saveSpace(space:SpaceRequest):Observable<HttpResponseModel>{
+    const url:string=`${this.baseUrl}/add`;
+    return this.apiService.post(url,space);
+  }
+
+  // for get space data by id
+  getSpaceById(id:number):Observable<HttpResponseModel>{
+    const url:string=`${this.baseUrl}/get_by_id/${id}`
+    return this.apiService.get(url)
   }
 }

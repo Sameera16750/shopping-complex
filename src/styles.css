@@ -46,3 +46,23 @@
   background-color: transparent;
 }
 
+.p-confirm-dialog-accept,
+.p-confirm-dialog-reject {
+  background-color: var(--primary-color-red);
+  color: white;
+  padding: 5px 10px;
+  font-size: 15px;
+  box-shadow:none;
+  border:none;
+}
+
+.p-confirm-dialog-accept{
+  background-color:var(--primary-color-blue)
+}
+
+.p-dialog-footer{
+  display: flex;
+  width: 100%;
+  justify-content: end;
+  gap: 10px;
+}

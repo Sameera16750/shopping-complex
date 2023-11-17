@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import {SpaceRepository} from "../../data/repositories/space.repository";
 import {map, Observable} from "rxjs";
 import {FloorResponse} from "../models/floor.model";
-import {SpaceResponse} from "../models/room.model";
+import {SpaceRequest, SpaceResponse} from "../models/room.model";
 import {HttpResponseModel} from "../models/http-response.model";
 
 @Injectable({
@@ -24,6 +24,31 @@ export class SpaceService {
           spaceNumber:item.spaceNumber,
           status: item.status
         })) as SpaceResponse[];
+      })
+    );
+  }
+
+  //  for save space
+  saveFloor(spaceData: SpaceRequest): Observable<{ msg:string,typ:number }> {
+    return this.spaceRepo.saveSpace(spaceData).pipe(
+      map((response: HttpResponseModel) => {
+        return {msg:response.message,typ:response.statusCode==200?1:2};
+      })
+    );
+  }
+
+  // get space by id
+  getSpaceById(id: number): Observable<SpaceResponse> {
+    return this.spaceRepo.getSpaceById(id).pipe(
+      map((response: HttpResponseModel) => {
+        const responseData = response.data;
+        return {
+          id: responseData.id,
+          spaceNumber:responseData.spaceNumber,
+          floorNavigation: responseData.floorNavigation,
+          spaceSize: responseData.spaceSize,
+          status: responseData.status,
+        } as SpaceResponse;
       })
     );
   }
