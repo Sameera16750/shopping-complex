@@ -5,3 +5,16 @@ export type FloorTableDataModel ={
   filledRoomCount:number,
   availableRoomCount:number
 }
+
+export type FloorRequest={
+  floorNumber: string,
+  totalSpaces: number,
+  status: number
+}
+
+export type FloorResponse={
+  id:number,
+  floorNumber: string,
+  totalSpaces: number,
+  status: number
+}

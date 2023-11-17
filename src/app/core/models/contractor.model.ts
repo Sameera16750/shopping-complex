@@ -5,3 +5,14 @@ export type ContractorTableDataModel ={
   emailAddress:string;
   address:string;
 }
+
+export type ContractorResponse={
+  id:number
+  name:string
+  contactNo:string
+  email:string
+  address:string
+  status:number
+}
+
+export type ContractorRequest=Omit<ContractorResponse, "id">
