@@ -1,5 +1,5 @@
 export type HttpResponseModel = {
-  StatusCode: number;
-  Message: string;
-  Data: any;
+  statusCode: number;
+  message: string;
+  data: any;
 };

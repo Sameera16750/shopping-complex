@@ -18,14 +18,15 @@
               <p-tag value="Filled" styleClass="bg-[--primary-color-yellow]"></p-tag>
             </div>
           </div>
-          <div class="add-btn" (click)="popupHeader='Add New Floor';visiblePopup=true;">
+          <div class="add-btn" (click)="isFloorPopup=true;visiblePopup=true;floorDataSubmitType='save'">
             Add <i class="pi pi-fw pi-plus"></i>
           </div>
         </div>
       </div>
     </div>
     <div class="w-full bg-[--primary-color-white] p-[10px] rounded-[10px] overscroll-x-auto">
-      <app-table [cols]="floorSchema" [products]="floorData" [isDeleteEnabled]="true" [isUpdateEnabled]="true"
+      <app-table [cols]="floorSchema" [products]="floorData" (updateElementId)="openUpdateFloorPopup($event)"
+                 [isDeleteEnabled]="true" [isUpdateEnabled]="true"
                  [isViewEnabled]="false"></app-table>
     </div>
   </div>
@@ -48,7 +49,7 @@
               <p-tag value="Filled" styleClass="bg-[--primary-color-yellow]"></p-tag>
             </div>
           </div>
-          <div class="add-btn" (click)="popupHeader='Add New Space';visiblePopup=true;">
+          <div class="add-btn" (click)="isFloorPopup=false;visiblePopup=true;">
             Add <i class="pi pi-fw pi-plus"></i>
           </div>
         </div>
@@ -61,11 +62,19 @@
 </div>
 
 <!--forms-->
-<p-dialog [header]="popupHeader" [(visible)]="visiblePopup">
-  <app-add-and-update-floor *ngIf="popupHeader==='Add New Floor'" submitButtonLabel="Save"
+<p-dialog
+  [header]="
+  isFloorPopup && floorDataSubmitType==='save'?'Add New Floor'
+  :isFloorPopup && floorDataSubmitType==='update'?'Update Floor'
+  :isFloorPopup! && spaceDataSubmitType==='save'?'Add New Space':'Update Space'" [(visible)]="visiblePopup">
+  <app-add-and-update-floor *ngIf="isFloorPopup" [submitButtonLabel]="floorDataSubmitType==='save'?'Save':'Update'"
                             [frmAddUpdateFloorDetails]="frmAddUpdateFloorDetails"
-                            (buttonSubmitted)="submitFloorData()"></app-add-and-update-floor>
-  <app-add-and-update-space [frmAddUpdateSpaceDetails]="frmAddUpdateSpaceDetails" *ngIf="popupHeader==='Add New Space'"
-                            [floorList]="floorList" (buttonSubmitted)="submitSpaceData()"
-                            submitButtonLabel="Save"></app-add-and-update-space>
+                            (buttonSubmitted)="floorDataSubmitType==='save'?submitFloorData():updateFloorData()">
+  </app-add-and-update-floor>
+  <app-add-and-update-space [frmAddUpdateSpaceDetails]="frmAddUpdateSpaceDetails" *ngIf="!isFloorPopup"
+                            [floorList]="floorList"
+                            (buttonSubmitted)="spaceDataSubmitType==='save'?submitSpaceData():submitFloorData()"
+                            [submitButtonLabel]="spaceDataSubmitType==='save'?'Save':'Update'"></app-add-and-update-space>
 </p-dialog>
+
+<p-toast></p-toast>

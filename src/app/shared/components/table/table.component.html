@@ -19,10 +19,10 @@
                     (click)="viewElementId.emit(rowData['id'])">View
             </button>
             <button class="action-btn bg-[--primary-color-blue]" *ngIf="isUpdateEnabled"
-                    (click)="viewElementId.emit(rowData['id'])">Update
+                    (click)="updateElementId.emit(rowData['id'])">Update
             </button>
             <button class="action-btn bg-[--primary-color-red]" *ngIf="isDeleteEnabled"
-                    (click)="viewElementId.emit(rowData['id'])">Delete
+                    (click)="deleteElementId.emit(rowData['id'])">Delete
             </button>
           </div>
         </td>

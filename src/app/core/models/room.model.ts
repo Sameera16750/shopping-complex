@@ -3,6 +3,7 @@ import {FloorResponse} from "./floor.model";
 export type RoomTableDataModel ={
   id:number,
   roomNo:string,
+  floorId:number,
   floorNo:string,
   availability:string,
 }
@@ -16,5 +17,5 @@ export type SpaceRequest={
 
 export type SpaceResponse=Omit<SpaceRequest,"floor"> & {
   id:number;
-  floor:FloorResponse;
+  floorNavigation:FloorResponse;
 }

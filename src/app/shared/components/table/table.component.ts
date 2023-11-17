@@ -25,7 +25,7 @@ export class TableComponent {
   @Input() isViewEnabled:boolean=true;
 
   // for emmit any action button trigger
-  @Output() deleteElementId= new EventEmitter<boolean>()
-  @Output() updateElementId= new EventEmitter<boolean>()
-  @Output() viewElementId= new EventEmitter<boolean>()
+  @Output() deleteElementId= new EventEmitter<number>()
+  @Output() updateElementId= new EventEmitter<number>()
+  @Output() viewElementId= new EventEmitter<number>()
 }

@@ -11,7 +11,7 @@ import {Observable} from "rxjs";
 export class ApiService {
 
   //api url
-  private readonly apiUrl = 'https://example.com'; // Replace with your API endpoint
+  private readonly apiUrl:string = 'https://localhost:7122'; // Replace with your API endpoint
 
   constructor(private http: HttpClient) {}
 
@@ -31,8 +31,8 @@ export class ApiService {
   }
 
   // for all delete methods
-  delete(url: string): Observable<void> {
-    return this.http.delete<void>(`${this.apiUrl}${url}`);
+  delete(url: string): Observable<any> {
+    return this.http.delete<any>(`${this.apiUrl}${url}`);
   }
 
 }
