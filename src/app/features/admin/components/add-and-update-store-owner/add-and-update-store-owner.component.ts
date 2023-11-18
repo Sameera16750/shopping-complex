@@ -34,4 +34,6 @@ export class AddAndUpdateStoreOwnerComponent {
   get frmFields() {
     return this.frmOwner.controls;
   }
+
+  protected readonly window = window;
 }

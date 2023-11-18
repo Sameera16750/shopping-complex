@@ -1,4 +1,9 @@
-<form [formGroup]="frmOwner">
+<form [formGroup]="frmOwner" class="relative">
+  <div (click)="window.location.reload()"
+       class="text-[20px] absolute top-0 cursor-pointer right-0 text-[--primary-color-white] py-[5px] px-[10px] bg-[--primary-color-red]
+     rounded-[5px]">
+    <i class="pi pi-spin pi-refresh"></i>
+  </div>
   <h3 class="text-center text-[18px] font-[500] uppercase">{{frmTitle}}</h3>
   <app-input-text label="Firs Name" [formControl]="$any(frmFields['firstName'])"></app-input-text>
   <app-input-text label="Last Name" [formControl]="$any(frmFields['lastName'])"></app-input-text>

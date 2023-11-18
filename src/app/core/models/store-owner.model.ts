@@ -16,7 +16,7 @@ export type StoreOwnerResponse = {
   contactNo: string;
   email: string;
   nic: string;
-  Status: number;
+  status: number;
 };
 
 export type StoreOwnerRequest=Omit<StoreOwnerResponse, 'id'>;
