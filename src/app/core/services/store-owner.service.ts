@@ -29,6 +29,24 @@ export class StoreOwnerService {
     );
   }
 
+  // for get store owners by status
+  getStoreOwnersByStatus(status:number): Observable<StoreOwnerResponse[]> {
+    return this.storeOwnerRepo.getStoreOwnersByStatus(status).pipe(
+      map((res: any) => {
+        return res.data.map((item: any) => ({
+          id: item.id,
+          firstName: item.firstName,
+          lastName: item.lastName,
+          address: item.address,
+          contactNo: item.contactNo,
+          email: item.email,
+          nic: item.nic,
+          status:item.status
+        })) as StoreOwnerResponse[];
+      })
+    );
+  }
+
   //  for save store Owner
   saveStoreOwner(storeOwnerData: StoreOwnerRequest): Observable<{ msg: string; typ: number }> {
     return this.storeOwnerRepo.saveStoreOwner(storeOwnerData).pipe(

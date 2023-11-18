@@ -258,7 +258,7 @@ export class SpacesComponent implements OnInit {
         status: 1,
       };
 
-      this.spaceService.saveFloor(data).subscribe((res) => {
+      this.spaceService.saveSpace(data).subscribe((res) => {
         this.messageService.add({
           severity: res.typ === 1 ? 'success' : 'error',
           summary: res.typ === 1 ? 'Success' : 'Error',

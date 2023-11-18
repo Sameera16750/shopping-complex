@@ -22,6 +22,12 @@ export class StoreOwnerRepository {
     return this.apiService.get<HttpResponseModel>(url);
   }
 
+  // for get all StoreOwner
+  getStoreOwnersByStatus(status:number):Observable<HttpResponseModel>{
+    const url:string=`${this.baseUrl}/get_by_status/${status}`
+    return this.apiService.get<HttpResponseModel>(url);
+  }
+
   //  for save StoreOwner
   saveStoreOwner(storeOwnerData:StoreOwnerRequest):Observable<HttpResponseModel>{
     const url:string=`${this.baseUrl}/add`

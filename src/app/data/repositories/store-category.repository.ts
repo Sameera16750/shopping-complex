@@ -23,6 +23,12 @@ export class StoreCategoryRepository {
     return this.apiService.get<HttpResponseModel>(url);
   }
 
+  // for get all StoreCategory by status
+  getStoreCategoriesByStatus(status:number):Observable<HttpResponseModel>{
+    const url:string=`${this.baseUrl}/get_by_status/${status}`
+    return this.apiService.get<HttpResponseModel>(url);
+  }
+
   //  for save StoreCategory
   saveStoreCategory(storeCategoryData:StoreCategoryRequest):Observable<HttpResponseModel>{
     const url:string=`${this.baseUrl}/add`

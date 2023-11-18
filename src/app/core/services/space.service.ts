@@ -10,6 +10,7 @@ import { HttpResponseModel } from '../models/http-response.model';
 export class SpaceService {
   constructor(private spaceRepo: SpaceRepository) {}
 
+  // for get all spaces
   getAllSpaces(): Observable<SpaceResponse[]> {
     return this.spaceRepo.getAllSpaces().pipe(
       map((res: HttpResponseModel) => {
@@ -26,8 +27,25 @@ export class SpaceService {
     );
   }
 
+  // for get spaces by status
+  getSpacesByStatus(status:number): Observable<SpaceResponse[]> {
+    return this.spaceRepo.getSpacesByStatus(status).pipe(
+      map((res: HttpResponseModel) => {
+        console.log(res);
+        // Assuming res.Data contains the array of floor data
+        return res.data.map((item: SpaceResponse) => ({
+          id: item.id,
+          floorNavigation: item.floorNavigation,
+          spaceSize: item.spaceSize,
+          spaceNumber: item.spaceNumber,
+          status: item.status,
+        })) as SpaceResponse[];
+      })
+    );
+  }
+
   //  for save space
-  saveFloor(spaceData: SpaceRequest): Observable<{ msg: string; typ: number }> {
+  saveSpace(spaceData: SpaceRequest): Observable<{ msg: string; typ: number }> {
     return this.spaceRepo.saveSpace(spaceData).pipe(
       map((response: HttpResponseModel) => {
         return {

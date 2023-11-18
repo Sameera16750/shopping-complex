@@ -23,6 +23,12 @@ export class SpaceRepository {
     return this.apiService.get<HttpResponseModel>(url);
   }
 
+  // for get all spaces by status
+  getSpacesByStatus(status:number):Observable<HttpResponseModel>{
+    const url:string=`${this.baseUrl}/get_by_status/${status}`;
+    return this.apiService.get<HttpResponseModel>(url);
+  }
+
   // for save space
   saveSpace(space:SpaceRequest):Observable<HttpResponseModel>{
     const url:string=`${this.baseUrl}/add`;

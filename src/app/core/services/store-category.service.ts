@@ -25,6 +25,19 @@ export class StoreCategoryService {
     );
   }
 
+  // get all store categories
+  getStoreCategoriesByStatus(status:number): Observable<StoreCategoryResponse[]> {
+    return this.storeCategoryRepo.getStoreCategoriesByStatus(status).pipe(
+      map((res: any) => {
+        return res.data.map((item: any) => ({
+          id: item.id,
+          categoryName: item.categoryName,
+          status:item.status
+        })) as StoreCategoryResponse[];
+      })
+    );
+  }
+
   //  for save store category
   saveStoreCategory(storeCategoryData: StoreCategoryRequest): Observable<{ msg: string; typ: number }> {
     return this.storeCategoryRepo.saveStoreCategory(storeCategoryData).pipe(

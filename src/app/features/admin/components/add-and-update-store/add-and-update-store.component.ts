@@ -31,6 +31,8 @@ export class AddAndUpdateStoreComponent {
   @Input()availableRoomList!:dropDownValues[]
   // for set Owner list
   @Input()ownerList!:dropDownValues[]
+  // for set Owner list
+  @Input()categoryList!:dropDownValues[]
   //  for form title
   @Input() frmTitle!: string;
   // for submit button inputs

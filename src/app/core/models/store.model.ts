@@ -26,14 +26,14 @@ export type StoreResponse = {
   spaceNavigation: SpaceResponse;
   monthlyCharge: number;
   keyMoney: number;
-  rentalDate: string;
-  rentalEndDate: string;
+  rentalDate: string|undefined;
+  rentalEndDate: string|undefined;
   status: number;
 };
 
 export type StoreRequest = Omit<
   StoreResponse,
-  'storeOwnerNavigation' | 'storeCategoryNavigation' | 'spaceNavigation'
+  'storeOwnerNavigation' | 'storeCategoryNavigation' | 'spaceNavigation'|'id'
 > & {
   storeOwner: number;
   storeCategory: number;
