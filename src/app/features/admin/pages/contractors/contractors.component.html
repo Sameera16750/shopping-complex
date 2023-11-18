@@ -1,15 +1,20 @@
 <div class="flex flex-wrap w-full gap-[20px]">
   <div class="w-[calc((100%/3)-10px)] flex flex-col gap-[20px]">
     <div class="p-[15px] rounded-[10px] bg-[--primary-color-white]">
-      <app-add-and-update-contractor frmTitle="Add New Contractor"
-                                     submitBtnLabel="Save"
-                                     (formSubmitting)="saveContractor()"
+      <app-add-and-update-contractor [frmTitle]="isFormSaveState?'Add New Contractor':'Update Contractor'"
+                                     [submitBtnLabel]="isFormSaveState?'Save':'Update'"
+                                     (formSubmitting)="isFormSaveState?saveContractor():updateContractor()"
                                      [frmContractor]="frmContractor"></app-add-and-update-contractor>
     </div>
   </div>
   <div class="w-[calc(((100%/3)*2)-10px)] flex flex-col gap-[20px]">
     <div class="flex flex-col w-full p-[15px] gap-[15px] rounded-[10px] bg-[--primary-color-white]">
-      <app-table [cols]="contractorTableSchema" [products]="contractorTableData" [isViewEnabled]="false"></app-table>
+      <app-table [cols]="contractorTableSchema" [products]="contractorTableData" [isViewEnabled]="false"
+                 (updateElementId)="selectContractorToUpdate($event)"
+                 (deleteElementId)="deleteContractor($event)"></app-table>
     </div>
   </div>
 </div>
+
+<p-toast></p-toast>
+<p-confirmDialog [style]="{width: '30vw'}"></p-confirmDialog>
