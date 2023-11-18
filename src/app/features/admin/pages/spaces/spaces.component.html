@@ -74,7 +74,7 @@
   </app-add-and-update-floor>
   <app-add-and-update-space [frmAddUpdateSpaceDetails]="frmAddUpdateSpaceDetails" *ngIf="!isFloorPopup"
                             [floorList]="floorList"
-                            (buttonSubmitted)="spaceDataSubmitType==='save'?submitSpaceData():submitFloorData()"
+                            (buttonSubmitted)="spaceDataSubmitType==='save'?submitSpaceData():updateSpaceData()"
                             [submitButtonLabel]="spaceDataSubmitType==='save'?'Save':'Update'"></app-add-and-update-space>
 </p-dialog>
 

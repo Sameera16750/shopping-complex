@@ -283,15 +283,39 @@ export class SpacesComponent implements OnInit {
       this.frmAddUpdateSpaceDetails
         .get('spaceNumber')
         ?.setValue(res.spaceNumber);
-      this.frmAddUpdateFloorDetails
+      this.frmAddUpdateSpaceDetails
         .get('spaceSize')
         ?.setValue(res.spaceSize);
-      this.frmAddUpdateFloorDetails
+      this.frmAddUpdateSpaceDetails
         .get('floorNumber')
         ?.setValue({id:res.floorNavigation.id,number:res.floorNavigation.floorNumber});
       this.visiblePopup = true;
 
       console.log(this.frmAddUpdateSpaceDetails.getRawValue());
     });
+  }
+
+  updateSpaceData(): void {
+    this.frmAddUpdateSpaceDetails.markAllAsTouched();
+    if (this.frmAddUpdateSpaceDetails.valid) {
+      let data: SpaceRequest = {
+        spaceNumber: this.frmAddUpdateSpaceDetails.get('spaceNumber')?.value,
+        floor: this.frmAddUpdateSpaceDetails.get('floorNumber')?.value.id,
+        spaceSize: this.frmAddUpdateSpaceDetails.get('spaceSize')?.value,
+        status: 1,
+      };
+      this.spaceService
+        .updateSpace(this.frmAddUpdateSpaceDetails.get('id')?.value, data)
+        .subscribe((res) => {
+          this.messageService.add({
+            severity: res.typ === 1 ? 'success' : 'error',
+            summary: res.typ === 1 ? 'Success' : 'Error',
+            detail: res.msg,
+          });
+          if (res.typ === 1) {
+            window.location.reload();
+          }
+        });
+    }
   }
 }

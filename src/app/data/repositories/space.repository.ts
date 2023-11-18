@@ -34,4 +34,10 @@ export class SpaceRepository {
     const url:string=`${this.baseUrl}/get_by_id/${id}`
     return this.apiService.get(url)
   }
+
+  // for Update space
+  updateSpace(id:number,spaceData:SpaceRequest):Observable<HttpResponseModel>{
+    const url:string=`${this.baseUrl}/update/${id}`
+    return this.apiService.put(url,spaceData)
+  }
 }
