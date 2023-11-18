@@ -1,20 +1,20 @@
 <div class="flex flex-wrap gap-[20px]">
   <div class="w-[calc((100%/2)-10px)] flex flex-col gap-[20px]">
     <div
-      class="w-full flex flex-col p-[15px] rounded-[10px] bg-[--primary-color-white] gap-[10px] categories-header-crd">
+      class="w-full flex flex-col p-[15px] rounded-[10px] bg-[--primary-color-white] gap-[10px] categories-header-crd relative">
       <h2 class="text-[20px] text-center uppercase font-[500]">Shop Categories</h2>
       <div class="flex justify-center">
         <div class="flex w-[70%] justify-between">
           <div class="value-area">
-            <span class="value">10</span>
+            <span class="value">{{totalCount}}</span>
             <p-tag value="Total" styleClass="bg-[--primary-color-blue]"></p-tag>
           </div>
           <div class="value-area">
-            <span class="value">3</span>
+            <span class="value">{{totalActiveCount}}</span>
             <p-tag value="Active" styleClass="bg-[--primary-color-green]"></p-tag>
           </div>
           <div class="value-area">
-            <span class="value">7</span>
+            <span class="value">{{totalInactiveCount}}</span>
             <p-tag value="Inactive" styleClass="bg-[--primary-color-yellow]"></p-tag>
           </div>
         </div>
@@ -22,13 +22,18 @@
     </div>
     <div class="rounded-[10px] bg-[--primary-color-white] p-[15px]">
       <app-add-and-update-store-categories [frmStoreCategory]="frmStoreCategory"
-                                           frmTitle="Add New Categories"
-                                           (isSubmitted)="submitFrmData()" btnLabel="save"
+                                           [frmTitle]="isFormOnSaveState?'Add New Categories':'Update Category'"
+                                           (isSubmitted)="isFormOnSaveState?submitFrmData():updateCategory()"
+                                           [btnLabel]="isFormOnSaveState?'Save':'Update'"
                                            [isBtnLoading]="false"></app-add-and-update-store-categories>
     </div>
   </div>
-  <div class="w-[calc((100%/2)-10px)] rounded-[10px] bg-[--primary-color-white] p-[15px]">
+  <div class="w-[calc((100%/2)-10px)] rounded-[10px] bg-[--primary-color-white] p-[15px] h-fit">
     <app-table [isViewEnabled]="false" [isDeleteEnabled]="false" [products]="categoryTableData"
-               [cols]="categoryTableSchema"></app-table>
+               [cols]="categoryTableSchema" (updateElementId)="getDataById($event)"></app-table>
   </div>
 </div>
+
+<p-toast></p-toast>
+
+<p-confirmDialog [style]="{width: '30vw'}"></p-confirmDialog>

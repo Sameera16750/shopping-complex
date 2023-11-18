@@ -1,9 +1,14 @@
-<form [formGroup]="frmStoreCategory">
+<form [formGroup]="frmStoreCategory" class="relative">
+  <div (click)="window.location.reload()"
+    class="text-[20px] absolute top-0 cursor-pointer right-0 text-[--primary-color-white] py-[5px] px-[10px] bg-[--primary-color-red]
+     rounded-[5px]">
+    <i class="pi pi-spin pi-refresh"></i>
+  </div>
   <h3 class="text-center text-[18px] font-[500] uppercase">{{frmTitle}}</h3>
   <app-input-text label="Category Name" [formControl]="$any(formField['categoryName'])"></app-input-text>
   <div class="flex flex-col mb-[20px] gap-[5px]">
-    <label class="text-[15px]">{{$any(formField['isActive']).value===true?'Active':'Inactive'}}</label>
-    <p-inputSwitch [formControl]="$any(formField['isActive'])" ></p-inputSwitch>
+    <label class="text-[15px]">{{$any(formField['isActive']).value === true ? 'Active' : 'Inactive'}}</label>
+    <p-inputSwitch [formControl]="$any(formField['isActive'])"></p-inputSwitch>
   </div>
   <app-submit-button [label]="btnLabel" (isButtonClicked)="isSubmitted.emit(true)"
                      [isLoading]="isBtnLoading"></app-submit-button>

@@ -35,4 +35,6 @@ export class AddAndUpdateStoreCategoriesComponent {
   get formField() {
     return this.frmStoreCategory.controls;
   }
+
+  protected readonly window = window;
 }

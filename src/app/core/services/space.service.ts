@@ -68,4 +68,17 @@ export class SpaceService {
       })
     );
   }
+
+
+  // for delete space details
+  deleteSpace(id: number): Observable<{ msg: string; typ: number }> {
+    return this.spaceRepo.deleteSpace(id).pipe(
+      map((response: HttpResponseModel) => {
+        return {
+          msg: response.message,
+          typ: response.statusCode == 200 ? 1 : 2,
+        };
+      })
+    );
+  }
 }

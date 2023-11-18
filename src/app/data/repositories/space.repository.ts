@@ -40,4 +40,10 @@ export class SpaceRepository {
     const url:string=`${this.baseUrl}/update/${id}`
     return this.apiService.put(url,spaceData)
   }
+
+  // delete space
+  deleteSpace(id:number):Observable<HttpResponseModel>{
+    const url:string=`${this.baseUrl}/delete/${id}`
+    return  this.apiService.delete(url);
+  }
 }

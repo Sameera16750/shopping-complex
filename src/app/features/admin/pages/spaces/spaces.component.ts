@@ -132,7 +132,6 @@ export class SpacesComponent implements OnInit {
   // for get all spaces and set to related lists
   private getAllSpaces() {
     this.spaceService.getAllSpaces().subscribe((res) => {
-      console.log(res);
       this.roomData = res
         .filter((item) => item.status != 0)
         .map((item) => {
@@ -318,4 +317,32 @@ export class SpacesComponent implements OnInit {
         });
     }
   }
+
+  // delete confirmation popup for space details
+  confirmSpaceDataDeletion(id: number) {
+    this.confirmationService.confirm({
+      message: 'Do you want to delete this record?',
+      header: 'Delete Confirmation',
+      icon: 'pi pi-info-circle',
+      accept: () => {
+        this.deleteSpaceData(id)
+      },
+      reject: () => {},
+    });
+  }
+
+  // for delete space data
+  deleteSpaceData(id: number): void {
+    this.spaceService.deleteSpace(id).subscribe((res) => {
+      this.messageService.add({
+        severity: res.typ === 1 ? 'success' : 'error',
+        summary: res.typ === 1 ? 'Success' : 'Error',
+        detail: res.msg,
+      });
+      if (res.typ === 1) {
+        window.location.reload();
+      }
+    });
+  }
+
 }
