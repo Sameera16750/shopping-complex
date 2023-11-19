@@ -1,5 +1,5 @@
 <div class="card">
-  <p-table [columns]="cols" [value]="products" [tableStyle]="{ 'min-width': '500px' }">
+  <p-table [columns]="cols" [value]="products" [tableStyle]="{ 'min-width': '500px','max-width':'640px','font-size':'14px' }">
     <ng-template pTemplate="header" let-columns>
       <tr>
         <th *ngFor="let col of columns;let index=index" [id]="index+'col'">

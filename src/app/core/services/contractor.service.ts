@@ -26,6 +26,22 @@ export class ContractorService {
     );
   }
 
+  // get Contractors by status
+  getContractorsByStatus(status:number): Observable<ContractorResponse[]> {
+    return this.contractorRepo.getContractorsByStatus(status).pipe(
+      map((res: any) => {
+        return res.data.map((item: any) => ({
+          id: item.id,
+          name: item.name,
+          contactNo: item.contactNo,
+          email: item.email,
+          address: item.address,
+          status: item.status,
+        })) as ContractorResponse[];
+      })
+    );
+  }
+
   //  for save Contractor
   saveContractor(
     contractorData: ContractorRequest

@@ -16,8 +16,8 @@ export type MaintenanceResponse = {
   maintenanceType: string;
   location: string;
   contractorNavigation: ContractorResponse;
-  startDate: string;
-  endDate: string;
+  startDate: string|undefined;
+  endDate: string|undefined;
   totalCharge: number;
   advancedValue: number;
   status: number;

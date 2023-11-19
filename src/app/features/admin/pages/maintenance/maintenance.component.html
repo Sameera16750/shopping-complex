@@ -16,14 +16,21 @@
     </div>
 
     <div class="p-[15px] rounded-[10px] bg-[--primary-color-white]">
-      <app-add-and-update-maintenance [frmMaintenance]="frmMaintenance" frmTitle="Add New Maintenance"
-                                      (isSubmitted)="saveMaintenance()" btnLabel="Save"></app-add-and-update-maintenance>
+      <app-add-and-update-maintenance [frmMaintenance]="frmMaintenance"
+                                      [frmTitle]="isFormInSaveState?'Add New Maintenance':'Update Maintenance'"
+                                      [contractorList]="contractorDropDownList"
+                                      (isSubmitted)="isFormInSaveState?saveMaintenance():updateMaintenance()"
+                                      [btnLabel]="isFormInSaveState?'Save':'Update'"></app-add-and-update-maintenance>
     </div>
   </div>
 
   <div class="w-[calc(((100%/3)*2)-10px)] flex flex-col gap-[20px]">
     <div class="flex flex-col w-full p-[15px] gap-[15px] rounded-[10px] bg-[--primary-color-white]">
-      <app-table [cols]="maintenanceTableSchema" [products]="maintenanceTableData"></app-table>
+      <app-table [cols]="maintenanceTableSchema" [products]="maintenanceTableData"
+                 (updateElementId)="selectMaintenanceToUpdate($event)"
+                 (deleteElementId)="deleteMaintenance($event)"></app-table>
     </div>
   </div>
 </div>
+<p-toast></p-toast>
+<p-confirmDialog [style]="{width: '30vw'}"></p-confirmDialog>

@@ -157,6 +157,7 @@ export class ContractorsComponent {
     });
   }
 
+  // for delete contractor details
   deleteContractor(id: number) {
     this.confirmationService.confirm({
       message: 'Do you want to delete this record?',
@@ -181,5 +182,4 @@ export class ContractorsComponent {
     });
   }
 
-  protected readonly event = event;
 }

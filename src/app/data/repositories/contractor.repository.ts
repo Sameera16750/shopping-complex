@@ -21,6 +21,12 @@ export class ContractorRepository {
     return this.apiService.get<HttpResponseModel>(url);
   }
 
+  // for get all Contractors
+  getContractorsByStatus(status:number):Observable<HttpResponseModel>{
+    const url:string=`${this.baseUrl}/get_by_status/${status}`
+    return this.apiService.get<HttpResponseModel>(url);
+  }
+
   //  for save Contractor
   saveContractor(contractorData:ContractorRequest):Observable<HttpResponseModel>{
     const url:string=`${this.baseUrl}/add`
